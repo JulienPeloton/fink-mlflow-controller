@@ -68,6 +68,7 @@ def main():
         if r.status_code != 200:
             logger.error("Something went wrong in deleting user with username {}: {}".format(args.username, r.content))
             sys.exit(1)
+        logger.info("User {} successfuly deleted".format(args.username))
 
 
 if __name__ == "__main__":
