@@ -61,7 +61,7 @@ def main():
         r = requests.post(
             "https://mlflow-dev.fink-broker.org/api/2.0/mlflow/users/create",
             json={"username": args.username, "password": args.password},
-            auth=("fink", os.environ["FINK_ADMIN_PWD"]),
+            auth=(os.environ["FINK_ADMIN_USERNAME"], os.environ["FINK_ADMIN_PWD"]),
         )
 
         if r.status_code != 200:
@@ -80,7 +80,7 @@ def main():
             r = requests.patch(
                 "https://mlflow-dev.fink-broker.org/api/2.0/mlflow/users/update-admin",
                 json={"username": args.username, "is_admin": True},
-                auth=("fink", os.environ["FINK_ADMIN_PWD"]),
+                auth=(os.environ["FINK_ADMIN_USERNAME"], os.environ["FINK_ADMIN_PWD"]),
             )
 
             if r.status_code != 200:
@@ -101,7 +101,7 @@ def main():
         r = requests.delete(
             "https://mlflow-dev.fink-broker.org/api/2.0/mlflow/users/delete",
             json={"username": args.username},
-            auth=("fink", os.environ["FINK_ADMIN_PWD"]),
+            auth=(os.environ["FINK_ADMIN_USERNAME"], os.environ["FINK_ADMIN_PWD"]),
         )
 
         if r.status_code != 200:
