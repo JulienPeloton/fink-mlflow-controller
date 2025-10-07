@@ -59,7 +59,7 @@ def main():
             logger.info("User {} promoted admin successfuly".format(args.username, args.password))
 
     elif args.command == "delete":
-        r = requests.post(
+        r = requests.delete(
             "https://mlflow-dev.fink-broker.org/api/2.0/mlflow/users/delete",
             json={"username": args.username},
             auth=("fink", os.environ["FINK_ADMIN_PWD"])
