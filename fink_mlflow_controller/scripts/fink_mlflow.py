@@ -83,7 +83,7 @@ def main():
 
         print("Users:")
         for user in users:
-            print(user)
+            print("userid={}, username={}, is_admin={}".format(user[0], user[1], user[3]))
 
         # Close the connection
         conn.close()
