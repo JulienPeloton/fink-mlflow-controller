@@ -66,7 +66,7 @@ def main():
 
         if r.status_code != 200:
             logger.error(
-                bcolors.Fail
+                bcolors.FAIL
                 + "Something went wrong in creating user with username {} and password {}: {}".format(
                     args.username, args.password, r.content
                 )
@@ -93,7 +93,7 @@ def main():
 
             if r.status_code != 200:
                 logger.error(
-                    bcolors.Fail
+                    bcolors.FAIL
                     + "Something went wrong in promoting {} as admin: {}".format(
                         args.username, r.content
                     )
@@ -118,7 +118,7 @@ def main():
 
         if r.status_code != 200:
             logger.error(
-                bcolors.Fail
+                bcolors.FAIL
                 + "Something went wrong in deleting user with username {}: {}".format(
                     args.username, r.content
                 )
