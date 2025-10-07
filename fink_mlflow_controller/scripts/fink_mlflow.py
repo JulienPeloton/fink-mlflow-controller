@@ -58,6 +58,18 @@ def main():
 
             logger.info("User {} promoted admin successfuly".format(args.username, args.password))
 
+    if args.command == "delete":
+        r = requests.post(
+            "https://mlflow-dev.fink-broker.org/api/2.0/mlflow/users/delete",
+            json={"username": args.username},
+            auth=("fink", os.environ["FINK_ADMIN_PWD"])
+        )
+
+        if r.status_code != 200:
+            logger.error("Something went wrong in deleting user with username {}: {}".format(args.username, r.content))
+            sys.exit(1)
+
+
 if __name__ == "__main__":
     main()
 
