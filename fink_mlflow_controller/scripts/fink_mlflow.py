@@ -133,7 +133,7 @@ def main():
     elif args.command == "list":
         # Connect to the SQLite database
         conn = sqlite3.connect(
-            "/opt/mlflow/basic_auth.db"
+            "/opt/fink_mlflow_controller/basic_auth.db"
         )  # Replace with your database filename
         cursor = conn.cursor()
 
