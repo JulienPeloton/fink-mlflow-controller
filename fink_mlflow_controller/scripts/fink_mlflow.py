@@ -66,14 +66,22 @@ def main():
 
         if r.status_code != 200:
             logger.error(
-                "Something went wrong in creating user with username {} and password {}: {}".format(
+                bcolors.Fail
+                + "Something went wrong in creating user with username {} and password {}: {}".format(
                     args.username, args.password, r.content
                 )
+                + bcolors.ENDC
             )
             sys.exit(1)
 
-        logger.info(
-            "User {} with password {} created".format(args.username, args.password)
+        (
+            logger.info(
+                bcolors.OKGREEN
+                + "User {} with password {} created".format(
+                    args.username, args.password
+                )
+            )
+            + bcolors.ENDC
         )
 
         if args.is_admin:
@@ -85,16 +93,20 @@ def main():
 
             if r.status_code != 200:
                 logger.error(
-                    "Something went wrong in promoting {} as admin: {}".format(
+                    bcolors.Fail
+                    + "Something went wrong in promoting {} as admin: {}".format(
                         args.username, r.content
                     )
+                    + bcolors.ENDC
                 )
                 sys.exit(1)
 
             logger.info(
-                "User {} promoted admin successfuly".format(
+                bcolors.OKGREEN
+                + "User {} promoted admin successfuly".format(
                     args.username,
                 )
+                + bcolors.ENDC
             )
 
     elif args.command == "delete":
@@ -106,12 +118,18 @@ def main():
 
         if r.status_code != 200:
             logger.error(
-                "Something went wrong in deleting user with username {}: {}".format(
+                bcolors.Fail
+                + "Something went wrong in deleting user with username {}: {}".format(
                     args.username, r.content
                 )
+                + bcolors.ENDC
             )
             sys.exit(1)
-        logger.info("User {} successfuly deleted".format(args.username))
+        logger.info(
+            bcolors.OKGREEN
+            + "User {} successfuly deleted".format(args.username)
+            + bcolors.ENDC
+        )
     elif args.command == "list":
         # Connect to the SQLite database
         conn = sqlite3.connect(
