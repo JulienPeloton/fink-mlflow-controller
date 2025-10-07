@@ -3,6 +3,7 @@ import requests
 import os
 import sys
 import argparse
+import sqlite3
 
 from fink_mlflow_controller.logger import get_fink_logger
 
