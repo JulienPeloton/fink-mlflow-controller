@@ -27,6 +27,8 @@ def main():
     delete_parser = subparsers.add_parser('delete', help='Delete a user')
     delete_parser.add_argument('-username', type=str, help='The user name', required=True)
 
+    list_parser = subparsers.add_parser('list', help='List users')
+
     args = parser.parse_args(None)
 
     logger = get_fink_logger("mlflow-users", "INFO")
@@ -69,6 +71,21 @@ def main():
             logger.error("Something went wrong in deleting user with username {}: {}".format(args.username, r.content))
             sys.exit(1)
         logger.info("User {} successfuly deleted".format(args.username))
+    elif args.command == "list":
+        # Connect to the SQLite database
+        conn = sqlite3.connect('/opt/mlflow/basic_auth.db')  # Replace with your database filename
+        cursor = conn.cursor()
+
+        # Fetch and display all users from the 'users' table
+        cursor.execute("SELECT * FROM users;")
+        users = cursor.fetchall()
+
+        print("Users:")
+        for user in users:
+            print(user)
+
+        # Close the connection
+        conn.close()
 
 
 if __name__ == "__main__":
