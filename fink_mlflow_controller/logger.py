@@ -38,4 +38,3 @@ def get_fink_logger(name: str = "test", log_level: str = "INFO") -> Logger:
     logger.setLevel(log_level)
 
     return logger
-
