@@ -1,5 +1,7 @@
 # Fink MLflow controller
 
+[![PEP8](https://github.com/JulienPeloton/fink-mlflow-controller/workflows/PEP8/badge.svg)](https://github.com/JulienPeloton/fink-mlflow-controller/actions?query=workflow%3APEP8)
+
 Use this repository to manage MLflow instance. You would simply clone it to the machine, and install it:
 
 ```bash

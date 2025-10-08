@@ -79,7 +79,8 @@ def main():
                 bcolors.OKGREEN
                 + "User {} with password {} created".format(
                     args.username, args.password
-                ) + bcolors.ENDC
+                )
+                + bcolors.ENDC
             )
         )
 
